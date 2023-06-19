@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
+    <title>ahmetbey</title>
+</head>
+<body>
+
+    <div>
+        <div class="big-div">
+            <div style="display: inline-block;">salon</div>
+            <div style="display: inline-block;"><a href="/light?secim=1&level=100" target="_blank">AÇ</a></div>
+            <p style="display: inline-block;">-        -</p>
+            <div style="display: inline-block;"><a href="/light?secim=1&level=0" target="_blank">KAPA</a></div>
+        </div>
+
+
+        <div class="big-div">
+            <div style="display: inline-block;">yatak odası</div>
+            <div style="display: inline-block;"><a href="/light?secim=2&level=100" target="_blank">AÇ</a></div>
+            <p style="display: inline-block;">-        -</p>
+            <div style="display: inline-block;"><a href="/light?secim=2&level=0" target="_blank">KAPA</a></div>
+        </div>
+
+
+        <div class="big-div">
+            <div style="display: inline-block;">mutfak</div>
+            <div style="display: inline-block;"><a href="/light?secim=3&level=100" target="_blank">AÇ</a></div>
+            <p style="display: inline-block;">-        -</p>
+            <div style="display: inline-block;"><a href="/light?secim=3&level=0" target="_blank">KAPA</a></div>
+        </div>
+
+
+        <div class="slidecontainer">
+            <p style="display: inline-block;"></p>
+
+            <p>salon loş ışık ayarı</p>
+            <input type="range" min="1" max="99" value="50" class="slider" id="theRange">
+            <button id="myButton">değiştir</button>
+            <p>değer: <span id="value"></span></p>
+        </div>
+
+        <script>
+
+            const button = document.getElementById('myButton');
+            var slider = document.getElementById("theRange");
+            var output = document.getElementById("value");
+            output.innerHTML = slider.value;
+
+            slider.oninput = function() {
+                output.innerHTML = this.value;
+            }
+
+            button.addEventListener('click', sendRequest);
+            function sendRequest() {
+                fetch("/light?secim=1&level=" + slider.value)
+            }
+
+        </script>
+
+    </div>
+
+</body>
+</html>
